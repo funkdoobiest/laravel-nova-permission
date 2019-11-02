@@ -13,6 +13,7 @@ use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\MorphToMany;
 use Laravel\Nova\Fields\BelongsToMany;
 use Spatie\Permission\PermissionRegistrar;
+use Illuminate\Support\Arr;
 
 trait PermissionResourceTrait
 {
@@ -22,7 +23,7 @@ trait PermissionResourceTrait
 	 */
 	public function title() {
 
-		return array_has(__('laravel-nova-permission::permissions.display_names'),$this->name)
+		return Arr::has(__('laravel-nova-permission::permissions.display_names'),$this->name)
 			? __("laravel-nova-permission::permissions.display_names.{$this->name}")
 			: $this->{static::$title};
 	}
