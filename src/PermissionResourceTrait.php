@@ -13,20 +13,9 @@ use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\MorphToMany;
 use Laravel\Nova\Fields\BelongsToMany;
 use Spatie\Permission\PermissionRegistrar;
-use Illuminate\Support\Arr;
 
 trait PermissionResourceTrait
 {
-
-	/**
-	 * Override the applyFilters method,title field translation
-	 */
-	public function title() {
-
-		return Arr::has(__('laravel-nova-permission::permissions.display_names'),$this->name)
-			? __("laravel-nova-permission::permissions.display_names.{$this->name}")
-			: $this->{static::$title};
-	}
 
 	public static function getModel()
 	{
